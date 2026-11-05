@@ -30,7 +30,7 @@
 2. Адрес репозитория:
 
    ```
-   https://gitea.xn--txe.net/besi/dsh-mcp-nestorclub.git
+   https://gitea.xn--txe.net/nestor/dsh-mcp-nestorclub.git
    ```
 
    Суффикс `.git` обязателен — без него pnpm пытается скачать архив и падает.
