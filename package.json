@@ -1,0 +1,27 @@
+{
+  "name": "dsh-mcp-nestorclub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Connects the nestorclub MCP server (mcp.nestorclub.com) to DeepSeek Harness, so its tools appear to the agent as mcp__web__*.",
+  "type": "module",
+  "icon": "./icon.svg",
+  "exports": {
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

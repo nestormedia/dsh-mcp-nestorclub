@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "MCP: nestorclub",
+    "description": "Connects the mcp.nestorclub.com MCP server, so its tools reach the agent as mcp__web__*."
+  }
+}
