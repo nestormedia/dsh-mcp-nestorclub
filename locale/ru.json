@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "MCP: nestorclub",
-    "description": "Подключает MCP-сервер mcp.nestorclub.com: инструменты сервера становятся доступны агенту как mcp__web__*."
+    "description": "Подключает MCP-сервер mcp.nestorclub.com и спрашивает ключ на своей странице: инструменты сервера становятся доступны агенту как mcp__web__*."
   }
 }

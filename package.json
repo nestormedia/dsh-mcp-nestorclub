@@ -1,17 +1,21 @@
 {
   "name": "dsh-mcp-nestorclub",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Connects the nestorclub MCP server (mcp.nestorclub.com) to DeepSeek Harness, so its tools appear to the agent as mcp__web__*.",
+  "description": "Connects the nestorclub MCP server (mcp.nestorclub.com) to DeepSeek Harness, asks for its API key on the plugin's own page, and exposes the server's tools to the agent as mcp__web__*.",
   "type": "module",
+  "main": "lib/index.js",
   "icon": "./icon.svg",
   "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg",
     "./package.json": "./package.json"
   },
   "files": [
+    "lib",
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
@@ -21,6 +25,13 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
     }
   },
   "license": "MIT"

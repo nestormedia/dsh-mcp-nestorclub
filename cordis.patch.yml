@@ -1,11 +1,14 @@
-# dsh-mcp-nestorclub — bundle patch: one row that connects the nestorclub MCP server.
+# dsh-mcp-nestorclub — bundle patch: the rows that connect the nestorclub MCP server.
 #
-# This is the same entry the profile used to carry by hand: the shipped
-# @deepseek-ai/dsh-mcp-client bridge with the Streamable HTTP transport.
-#
-# The x-api-key header is deliberately absent — it belongs to the person using
-# the plugin, not to this repository. Add it as an override in your own profile
-# patch (README.md, "Ключ доступа"); that override replaces this config whole.
+# 1. mcp-nestorclub       — the shipped @deepseek-ai/dsh-mcp-client bridge with
+#                           the Streamable HTTP transport. Its config carries no
+#                           x-api-key header: the key belongs to the person using
+#                           the plugin, not to this repository. Add it on the
+#                           plugin's own page in the Web Plugins list, or with
+#                           /mcp-key, and the plugin saves it as a profile
+#                           override through the config editor.
+# 2. mcp-nestorclub-host  — this package's own Host half: the key card, the
+#                           /mcp-key command, and the /mcp-nestorclub JSON API.
 - insert:
     - id: mcp-nestorclub
       name: '@deepseek-ai/dsh-mcp-client'
@@ -13,4 +16,6 @@
         serverName: web
         transport: streamable-http
         url: https://mcp.nestorclub.com
-        failOnStartupError: true
+        failOnStartupError: false
+    - id: mcp-nestorclub-host
+      name: 'dsh-mcp-nestorclub'
