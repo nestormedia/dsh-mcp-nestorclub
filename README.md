@@ -26,11 +26,38 @@
    ```
 
    Это адрес архива, а не репозитория: pnpm не вызывает git, поэтому установка идёт и на машине без git. Адрес ведёт на текущую ветку `main`; чтобы зафиксировать версию, замените `refs/heads/main` на sha коммита.
+
+   > **Адрес репозитория не подойдёт.** Строка вида
+   > `https://github.com/nestormedia/dsh-mcp-nestorclub` (без `/archive/...`) или
+   > короткая запись `nestormedia/dsh-mcp-nestorclub` — это git-спецификация: и
+   > DeepSeek Harness, и pnpm запускают для неё `git ls-remote`, и без git
+   > установка падает с `[ERR_PNPM_GIT_RESOLVE_FAILED] … 'git' is not
+   > recognized`. GitHub тут ничего не меняет — дело в форме адреса, а не в
+   > хостинге. Вставляйте только адрес архива, он кончается на `.tar.gz`.
+
 3. **Install**, затем перезапустите приложение (клиентская половина грузится
    вместе со страницей, поэтому после установки нужен один refresh).
 
 Если в профиле осталась вставленная руками строка `mcp-nestorclub` (старый
 способ), удалите её: два клиента с одним `serverName: web` конфликтуют.
+
+### Если установка пишет про git
+
+Значит в поле адреса оказалась строка не того вида. Признак:
+
+```
+[ERR_PNPM_GIT_RESOLVE_FAILED] Failed to resolve git dependency "https://github.com/nestormedia/dsh-mcp-nestorclub":
+git ls-remote failed: 'git' is not recognized as an internal or external command
+```
+
+Замените её на архивную и повторите установку — git для неё не вызывается вообще:
+
+```
+https://github.com/nestormedia/dsh-mcp-nestorclub/archive/refs/heads/main.tar.gz
+```
+
+Проверено на машине, где `PATH` содержит только `C:\Windows\System32` (git
+отсутствует): архив ставится, адрес репозитория — нет.
 
 ## Ключ доступа
 
